@@ -13,6 +13,8 @@ namespace apief
 
         public virtual DbSet<Account> Accounts { get; set; }
         public virtual DbSet<Note> Notes { get; set; }
+        public virtual DbSet<Category> Categories { get; set; }
+
        
 
 
@@ -38,6 +40,10 @@ namespace apief
             modelBuilder.Entity<Note>()
              .ToTable("Notes", "Dbo")
                 .HasKey(u => u.NoteId);
+
+                modelBuilder.Entity<Category>()
+                .ToTable("Categories", "Dbo")
+                .HasKey(u=> u.CategoryId);
 
           
 

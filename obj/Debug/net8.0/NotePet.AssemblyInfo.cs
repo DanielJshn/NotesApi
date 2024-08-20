@@ -13,7 +13,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("NotePet")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f79853e868adb07c7c9472acba5c4ab2ce2d27be")]
 [assembly: System.Reflection.AssemblyProductAttribute("NotePet")]
 [assembly: System.Reflection.AssemblyTitleAttribute("NotePet")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

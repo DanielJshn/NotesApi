@@ -9,19 +9,13 @@ public class NoteService : INoteService
     {
         _noteRepository = noteRepository;
     }
-    private Note MapToNoteObject(int userId, NoteDto noteDto)
-    {
-        // Преобразование данных из NoteDto в Note
-        return new Note
-        {
-            Id = userId,
-            Title = noteDto.Title,
-            Description = noteDto.Description,
-            // Другие поля, которые необходимо скопировать из noteDto в Note
-        };
-    }
+
     public Note AddNote(int userId, NoteDto noteDto)
     {
+        if (userId == 0)
+        {
+            throw new Exception("User not found!");
+        }
         if (noteDto == null)
         {
             throw new Exception("Note data is null!");
@@ -39,27 +33,55 @@ public class NoteService : INoteService
 
     public void UpdateNote(int userId, int noteId, NoteDto updatedNoteDto)
     {
-        // Ваша бизнес-логика для обновления заметки
+        if (userId == 0)
+        {
+            throw new Exception("User not found!");
+        }
+        if (updatedNoteDto.Title.IsNullOrEmpty())
+        {
+            throw new Exception("Title is empty!");
+        }
+        if (updatedNoteDto.Description.IsNullOrEmpty())
+        {
+            throw new Exception("Description is empty!");
+        }
         _noteRepository.UpdateData(noteId, userId, updatedNoteDto);
-    }
-
-    public Note GetNoteById(int userId, int noteId)
-    {
-        // Ваша бизнес-логика для получения заметки по идентификатору
-        return _noteRepository.GetNote(noteId, userId);
     }
 
     public List<Note> GetNotesByUserId(int userId)
     {
-        // Ваша бизнес-логика для получения всех заметок пользователя
+        if (userId == 0)
+        {
+            throw new Exception("User not found!");
+        }
         return _noteRepository.GetNotes(userId);
     }
 
     public void DeleteNoteById(int userId, int noteId)
     {
-        // Ваша бизнес-логика для удаления заметки по идентификатору
+        if (userId == 0)
+        {
+            throw new Exception("User not found!");
+        }
         _noteRepository.DeleteNote(noteId, userId);
     }
 
-    // Другие методы и бизнес-логика, если необходимо
+    public Category AddCategory(int userId, CategoryDto categoryDto)
+    {
+        if (userId == 0)
+        {
+            throw new Exception("User not found!");
+        }
+        return _noteRepository.AddCategory(userId, categoryDto);
+    }
+
+    public void DeleteCategoryById(int categoryId, int userId)
+    {
+        if (userId == 0)
+        {
+            throw new Exception("User not found!");
+        }
+         _noteRepository.DeleteCategoryById(categoryId, userId);
+    }
+
 }

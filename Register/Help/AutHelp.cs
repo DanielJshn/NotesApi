@@ -78,13 +78,6 @@ namespace apief
         }
 
 
-
-
-
-
-
-
-
         public int GetUserIdFromToken(string? accessToken)
         {
             int userId = 0;
@@ -106,7 +99,6 @@ namespace apief
 
             return userId;
         }
-
 
 
 
@@ -135,8 +127,6 @@ namespace apief
                 return false;
             }
         }
-
-
 
 
         public string GenerateNewToken(int userId)
